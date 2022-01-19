@@ -51,7 +51,7 @@ class UI_Datepicker extends \booosta\ui\UI
       if($event['link']) $obj->set_link($event['link']);
       if($event['link_target']) $obj->set_link_target($event['link_target']);
       if($event['description']) $obj->set_description($event['description']);
-      if(is_array($event['settings'])) $obj->set_settings($event['settings']);;
+      if(is_array($event['settings'])) $obj->set_event_settings($event['settings']);;
 
       $this->events[$obj->sortkey()] = $obj;
     endif;
@@ -120,7 +120,7 @@ class Event extends \booosta\Base\base
   public function get_link() { return $this->link; }
   public function get_link_target() { return $this->link_target; }
   public function get_description() { return $this->description; }
-  public function get_settings() { return $this->settings; }
+  public function get_event_settings() { return $this->settings; }
   public function set_name($val) { $this->name = $val; }
   public function set_id($val) { $this->id = $val; }
   public function set_date($val) { $this->date = $val; }
@@ -130,8 +130,8 @@ class Event extends \booosta\Base\base
   public function set_description($val) { $this->description = $val; }
   public function set_settings($val) { $this->settings = $val; }
 
-  public function get_setting($key) { return $this->settings[$key]; }
-  public function set_setting($key, $val) { $this->settings[$key] = $val; }
+  public function get_event_setting($key) { return $this->settings[$key]; }
+  public function set_event_setting($key, $val) { $this->settings[$key] = $val; }
 
   public function sortkey() { return date('YmdHis', strtotime($this->date)) . uniqid(); }
 
